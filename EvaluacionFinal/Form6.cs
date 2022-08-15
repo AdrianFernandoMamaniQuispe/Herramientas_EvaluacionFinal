@@ -99,7 +99,7 @@ namespace EvaluacionFinal
             double imp = cantidad * precio;
             if (formulariovalido())
             {
-                /*DetalleFactura factura = new DetalleFactura();
+                DetalleFactura factura = new DetalleFactura();
                 factura.NFAC = Convert.ToInt32(txtNfact.Text.Trim());
                 factura.Codpro = cmbProductos.SelectedValue.ToString();
                 factura.Cantidad = Convert.ToInt32(txtCantidad.Text);
@@ -111,7 +111,7 @@ namespace EvaluacionFinal
                 txtSumt.Text = total.ToString();
                 txtIgv.Text = (0.18 * total).ToString();
                 txtNpago.Text = (1.18 * total).ToString();
-                dgvCompras.DataSource = a.visualizar(Convert.ToInt32(txtNfact.Text));*/
+                dgvCompras.DataSource = a.visualizar(Convert.ToInt32(txtNfact.Text));
             }
 
         }
@@ -123,8 +123,8 @@ namespace EvaluacionFinal
 
         private void frmFactura_Load(object sender, EventArgs e)
         {
-            //cmbProductos.DataSource = listarProductos();
-            //dgvCompras.DataSource = a.visualizar(0);
+            cmbProductos.DataSource = listarProductos();
+            dgvCompras.DataSource = a.visualizar(0);
             dtFecha.Text = DateTime.Now.ToString();
             dgvCompras.Columns[0].HeaderText = "NºFactura";
             dgvCompras.Columns[1].HeaderText = "Código";
@@ -145,7 +145,7 @@ namespace EvaluacionFinal
         {
             if (txtNpago.Text.Length > 0)
             {
-                /*using (HERRAMIENTAS_FINALEntities2 bd = new HERRAMIENTAS_FINALEntities2())
+                using (HERRAMIENTAS_FINALEntities2 bd = new HERRAMIENTAS_FINALEntities2())
                 {
                     Factura fact = new Factura();
                     fact.NFAC = Convert.ToInt32(txtNfact.Text.Trim());
@@ -156,7 +156,7 @@ namespace EvaluacionFinal
                     fact.TOTAL = Convert.ToDouble(txtNpago.Text.Trim());
                     bd.Factura.Add(fact);
                     bd.SaveChanges();
-                }*/
+                }
                 MessageBox.Show("Registrado con éxito", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 total = 0;
             }
@@ -167,14 +167,14 @@ namespace EvaluacionFinal
         }
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-           /* if (txtNfact.Text.Length > 0)
+            if (txtNfact.Text.Length > 0)
             {
                 dgvCompras.DataSource = a.visualizar(Convert.ToInt32(txtNfact.Text));
             }
             else
             {
                 dgvCompras.DataSource = a.visualizar(0);
-            }*/
+            }
         }
     }
 }

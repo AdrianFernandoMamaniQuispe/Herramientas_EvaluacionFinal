@@ -56,9 +56,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtIGV = new System.Windows.Forms.TextBox();
+            this.txtNeto = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,7 @@
             this.txtCodp.Name = "txtCodp";
             this.txtCodp.Size = new System.Drawing.Size(94, 20);
             this.txtCodp.TabIndex = 5;
+            this.txtCodp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodp_KeyPress);
             // 
             // label1
             // 
@@ -152,6 +153,7 @@
             this.btnObtener.TabIndex = 14;
             this.btnObtener.Text = "...";
             this.btnObtener.UseVisualStyleBackColor = true;
+            this.btnObtener.Click += new System.EventHandler(this.btnObtener_Click);
             // 
             // label6
             // 
@@ -197,6 +199,7 @@
             this.btnRegistrar.TabIndex = 19;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // groupBox1
             // 
@@ -267,6 +270,7 @@
             this.btnConsultar.TabIndex = 23;
             this.btnConsultar.Text = "Consultar Comprobante";
             this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnGestionarc
             // 
@@ -279,6 +283,7 @@
             this.btnGestionarc.TabIndex = 22;
             this.btnGestionarc.Text = "Gestionar Compras\r\n";
             this.btnGestionarc.UseVisualStyleBackColor = false;
+            this.btnGestionarc.Click += new System.EventHandler(this.btnGestionarc_Click);
             // 
             // label10
             // 
@@ -307,35 +312,35 @@
             this.label12.TabIndex = 27;
             this.label12.Text = "Neto Pago:";
             // 
-            // textBox1
+            // txtTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(863, 482);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 28;
+            this.txtTotal.Location = new System.Drawing.Point(863, 482);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(124, 20);
+            this.txtTotal.TabIndex = 28;
             // 
-            // textBox2
+            // txtIGV
             // 
-            this.textBox2.Location = new System.Drawing.Point(863, 508);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(124, 20);
-            this.textBox2.TabIndex = 29;
+            this.txtIGV.Location = new System.Drawing.Point(863, 508);
+            this.txtIGV.Name = "txtIGV";
+            this.txtIGV.Size = new System.Drawing.Size(124, 20);
+            this.txtIGV.TabIndex = 29;
             // 
-            // textBox3
+            // txtNeto
             // 
-            this.textBox3.Location = new System.Drawing.Point(863, 534);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(124, 20);
-            this.textBox3.TabIndex = 30;
+            this.txtNeto.Location = new System.Drawing.Point(863, 534);
+            this.txtNeto.Name = "txtNeto";
+            this.txtNeto.Size = new System.Drawing.Size(124, 20);
+            this.txtNeto.TabIndex = 30;
             // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 570);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNeto);
+            this.Controls.Add(this.txtIGV);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -363,6 +368,7 @@
             this.Name = "frmCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compras";
+            this.Load += new System.EventHandler(this.frmCompras_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
@@ -401,8 +407,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtIGV;
+        private System.Windows.Forms.TextBox txtNeto;
     }
 }

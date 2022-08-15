@@ -8,7 +8,7 @@ namespace EvaluacionFinal
 {
     public class cFacturacion
     {
-        /*public void insertardfactura(DetalleFactura factura)
+        public void insertardfactura(DetalleFactura factura)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace EvaluacionFinal
                 throw;
             }
         }
-        /*public string obtenerNombreCliente(string cdc)
+        public string obtenerNombreCliente(string cdc)
         {
             string cliente = "";
             using (HERRAMIENTAS_EX_FINALEntities1 bd = new HERRAMIENTAS_EX_FINALEntities1())
