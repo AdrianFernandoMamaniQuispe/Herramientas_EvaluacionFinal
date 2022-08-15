@@ -87,6 +87,7 @@
             this.txtDatos.Name = "txtDatos";
             this.txtDatos.Size = new System.Drawing.Size(394, 20);
             this.txtDatos.TabIndex = 4;
+            this.txtDatos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDatos_KeyPress);
             // 
             // txtDireccion
             // 
@@ -106,6 +107,7 @@
             this.btnNuevo.TabIndex = 6;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnGuardar
             // 
@@ -118,6 +120,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnModificar
             // 
@@ -130,6 +133,7 @@
             this.btnModificar.TabIndex = 8;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -142,6 +146,7 @@
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnSalir
             // 
@@ -185,6 +190,7 @@
             this.dgvProv.Name = "dgvProv";
             this.dgvProv.Size = new System.Drawing.Size(570, 317);
             this.dgvProv.TabIndex = 14;
+            this.dgvProv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProv_CellContentClick);
             // 
             // pictureBox1
             // 
@@ -221,6 +227,7 @@
             this.Name = "frmProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proveedor";
+            this.Load += new System.EventHandler(this.frmProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
