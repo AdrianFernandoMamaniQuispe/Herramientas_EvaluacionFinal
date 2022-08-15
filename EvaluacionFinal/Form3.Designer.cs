@@ -39,7 +39,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvProv = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -77,6 +76,7 @@
             // txtCodp
             // 
             this.txtCodp.Location = new System.Drawing.Point(180, 109);
+            this.txtCodp.MaxLength = 5;
             this.txtCodp.Name = "txtCodp";
             this.txtCodp.Size = new System.Drawing.Size(125, 20);
             this.txtCodp.TabIndex = 3;
@@ -127,7 +127,7 @@
             this.btnModificar.AllowDrop = true;
             this.btnModificar.BackColor = System.Drawing.Color.LightBlue;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Location = new System.Drawing.Point(306, 207);
+            this.btnModificar.Location = new System.Drawing.Point(210, 207);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(90, 31);
             this.btnModificar.TabIndex = 8;
@@ -140,7 +140,7 @@
             this.btnEliminar.AllowDrop = true;
             this.btnEliminar.BackColor = System.Drawing.Color.LightBlue;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(402, 207);
+            this.btnEliminar.Location = new System.Drawing.Point(306, 207);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(90, 31);
             this.btnEliminar.TabIndex = 9;
@@ -160,19 +160,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.AllowDrop = true;
-            this.btnConsultar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsultar.Location = new System.Drawing.Point(210, 207);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(90, 31);
-            this.btnConsultar.TabIndex = 11;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = false;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // label4
             // 
@@ -213,7 +200,6 @@
             this.Controls.Add(this.dgvProv);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -248,7 +234,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvProv;
