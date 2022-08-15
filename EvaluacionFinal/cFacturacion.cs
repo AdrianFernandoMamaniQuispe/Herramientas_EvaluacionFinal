@@ -68,6 +68,6 @@ namespace EvaluacionFinal
                 }
             }
             return precio.ToString();
-        }*/
+        }
     }
 }

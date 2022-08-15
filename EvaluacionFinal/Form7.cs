@@ -100,7 +100,15 @@ namespace EvaluacionFinal
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            guardar();
+            if (validarRegistro())
+            {
+                guardar();
+                limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Registro existente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -117,6 +125,75 @@ namespace EvaluacionFinal
                 txtDescripcion.Text = dgvProductos.Rows[e.RowIndex].Cells["Descripcion"].FormattedValue.ToString();
                 txtPrecio.Text = dgvProductos.Rows[e.RowIndex].Cells["Precio"].FormattedValue.ToString();
                 txtStock.Text = dgvProductos.Rows[e.RowIndex].Cells["Stock"].FormattedValue.ToString();
+            }
+        }
+
+        private void limpiar()
+        {
+            foreach (Control caja in this.Controls)
+            {
+                if (caja is TextBox)
+                {
+                    caja.Text = "";
+                }
+            }
+            txtCodprod.Focus();
+        }
+        private Boolean validarRegistro()
+        {
+            using (HERRAMIENTAS_FINALEntities1 bd = new HERRAMIENTAS_FINALEntities1())
+            {
+                foreach (Producto prod in bd.Producto.ToList())
+                {
+                    if (txtCodprod.Text == prod.Codpro)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        private Boolean validarEliminacion()
+        {
+            using (HERRAMIENTAS_FINALEntities1 bd = new HERRAMIENTAS_FINALEntities1())
+            {
+                foreach (DetalleCompra dcompra in bd.DetalleCompra.ToList())
+                {
+                    if (txtCodprod.Text == dcompra.Codpro)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        private void eliminar()
+        {
+            using (HERRAMIENTAS_FINALEntities1 bd = new HERRAMIENTAS_FINALEntities1())
+            {
+                Producto area = bd.Producto.Find(txtCodprod.Text);
+                bd.Producto.Remove(area);
+                bd.SaveChanges();
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            limpiar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (validarEliminacion())
+            {
+                eliminar();
+                limpiar();
+                MessageBox.Show("Registro eliminado");
+                dgvProductos.DataSource = visualizar();
+            }
+            else
+            {
+                MessageBox.Show("Tablas relacionadas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
