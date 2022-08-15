@@ -15,7 +15,6 @@ namespace EvaluacionFinal
         //============================== FUNCIÓN LISTAR PROVEEDORES ================================================
         public List<Proveedor> ListarProveedores()
         {
-
             using (ExamenFinalEntities bd = new ExamenFinalEntities())
             {
                 return bd.Proveedor.ToList();
@@ -28,8 +27,6 @@ namespace EvaluacionFinal
         //============================== FUNCIÓN AGREGAR PROVEEDORES ================================================
         public void ingresarProveedor(string PCod, string PDato, string PDireccion)
         {
-
-
             using (ExamenFinalEntities bd = new ExamenFinalEntities())
             {
                 //================================== INSTANCIAMOS datosDelivery DEL TIPO Delivery ================================
@@ -41,11 +38,7 @@ namespace EvaluacionFinal
                 //========================= ENVIAMOS LOS DATOS A LA BASE DE DATOS > DELIVERY, LOS DATOS GUARDADOS EN datosDelivery======
                 bd.Proveedor.Add(datoProveedor);
                 bd.SaveChanges();
-
-
-
             }
-
         }
         //=======================================================================================================================
 
@@ -65,9 +58,7 @@ namespace EvaluacionFinal
                 //========== ENVIAMOS LOS DATOS MODIFICADOS A LA BASE DE DATOS -> PROVEEDOR, LOS DATOS GUARDADOS EN datoProveedor======
                 bd.Entry(datoProveedor).State = System.Data.Entity.EntityState.Modified;
                 bd.SaveChanges();
-
             }
-
         }
         //==============================================================================================================================
 

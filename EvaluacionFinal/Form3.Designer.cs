@@ -80,6 +80,7 @@
             this.txtCodp.Name = "txtCodp";
             this.txtCodp.Size = new System.Drawing.Size(125, 20);
             this.txtCodp.TabIndex = 3;
+            this.txtCodp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodp_KeyPress);
             // 
             // txtDatos
             // 

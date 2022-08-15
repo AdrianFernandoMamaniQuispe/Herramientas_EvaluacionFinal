@@ -28,8 +28,43 @@ namespace EvaluacionFinal
             }
             txtCodp.ReadOnly = false;
             txtCodp.Focus();
+            //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+            btnModificar.Enabled = false;
+            btnEliminar.Enabled = false;
+            //════════════════════════════════════════════════════════════════════════════════════════════╝
         }
 
+        //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+        private void mostrarListaProveedores()
+        {
+            ClsProveedor oClsProveedor = new ClsProveedor();
+            dgvProv.DataSource = oClsProveedor.ListarProveedores();
+            dgvProv.Columns[0].HeaderText = "Código Proveedor";
+            dgvProv.Columns[1].HeaderText = "Nombres completos";
+            dgvProv.Columns[2].HeaderText = "Dirección";
+            dgvProv.Columns[0].Width = 100;
+            dgvProv.Columns[1].Width = 186;
+            dgvProv.Columns[2].Width = 240;
+
+        }
+        //════════════════════════════════════════════════════════════════════════════════════════════╝
+
+        //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+        private bool formularioValido()
+        {
+            bool valido = false;
+
+            string pcodigo = txtCodp.Text;
+            string pnombres = txtDatos.Text;
+            string pdireccion = txtDireccion.Text;
+
+            if (pcodigo.Length > 0 && pnombres.Length > 0 && pdireccion.Length > 0)
+            {
+                valido = true;
+            }
+            return valido;
+        }
+        //════════════════════════════════════════════════════════════════════════════════════════════╝
 
 
 
@@ -40,8 +75,12 @@ namespace EvaluacionFinal
 
         private void frmProveedor_Load(object sender, EventArgs e)
         {
-            ClsProveedor oClsProveedor = new ClsProveedor();
-            dgvProv.DataSource = oClsProveedor.ListarProveedores();
+            //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+            mostrarListaProveedores();
+
+            btnModificar.Enabled = false;
+            btnEliminar.Enabled = false;
+            //════════════════════════════════════════════════════════════════════════════════════════════╝
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -55,18 +94,35 @@ namespace EvaluacionFinal
             {
                 oClsProveedor.eliminar(txtCodp.Text);
                 limpiar();
-                dgvProv.DataSource = oClsProveedor.ListarProveedores();
+                mostrarListaProveedores();
+                //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+                MessageBox.Show("Proveedor eliminado");
+                //════════════════════════════════════════════════════════════════════════════════════════════╝
             }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //================== INSTACIAMOS LA CLASE PROVEEDOR Y LLAMAR A LA FUNCIÓN MODIFICAR PROVEEDOR ===============
+            //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
             ClsProveedor oClsProveedor = new ClsProveedor();
-            oClsProveedor.modificarProveedor(txtCodp.Text, txtDatos.Text, txtDireccion.Text);
-            limpiar();
-            dgvProv.DataSource = oClsProveedor.ListarProveedores();
-            //===========================================================================================================
+            if (formularioValido())
+            {
+                //================== INSTACIAMOS LA CLASE PROVEEDOR Y LLAMAR A LA FUNCIÓN MODIFICAR PROVEEDOR ===============
+                oClsProveedor.modificarProveedor(txtCodp.Text, txtDatos.Text, txtDireccion.Text);
+                limpiar();
+                mostrarListaProveedores();
+
+                MessageBox.Show("Modificación realizada");
+
+
+                //===========================================================================================================
+
+            }
+            else
+            {
+                MessageBox.Show("No se permite datos vacios");
+            }
+            //════════════════════════════════════════════════════════════════════════════════════════════╝
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -76,19 +132,34 @@ namespace EvaluacionFinal
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //═════════════════════════════════════════════════════════════════CAMBIO═════════════════════════════════════════════════════╗
+
             //================== INSTACIAMOS LA CLASE PROVEEDOR Y LLAMAR A LA FUNCIÓN INGRESAR PROVEEDOR ===============
             ClsProveedor oClsProveedor = new ClsProveedor();
-            if (oClsProveedor.validarCodigoProveedorRepetido(txtCodp.Text) > 0)
+            if (formularioValido())
             {
-                MessageBox.Show("Codigo de proveedor ya existe");
+                if (oClsProveedor.validarCodigoProveedorRepetido(txtCodp.Text) > 0)
+                {
+                    MessageBox.Show("Codigo de proveedor ya existe");
+                    txtCodp.Focus();
+                }
+                else
+                {
+                    oClsProveedor.ingresarProveedor(txtCodp.Text, txtDatos.Text, txtDireccion.Text);
+                    limpiar();
+                    mostrarListaProveedores();
+
+                    MessageBox.Show("Proveedor guardado");
+
+
+                    //===========================================================================================================
+                }
             }
             else
             {
-                oClsProveedor.ingresarProveedor(txtCodp.Text, txtDatos.Text, txtDireccion.Text);
-                limpiar();
-                dgvProv.DataSource = oClsProveedor.ListarProveedores();
-                //===========================================================================================================
+                MessageBox.Show("No se permite datos vacios");
             }
+            //════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -98,6 +169,10 @@ namespace EvaluacionFinal
 
         private void dgvProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+            btnModificar.Enabled = true;
+            btnEliminar.Enabled = true;
+            //════════════════════════════════════════════════════════════════════════════════════════════╝
             txtCodp.ReadOnly = true;
             if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvProv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
@@ -116,6 +191,16 @@ namespace EvaluacionFinal
                 txtDireccion.Focus();
             }
             Validaciones.validarLetras(e);
+        }
+
+        private void txtCodp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //═════════════════════════════════════════CAMBIO═════════════════════════════════════════════╗
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtDatos.Focus();
+            }
+            //════════════════════════════════════════════════════════════════════════════════════════════╝
         }
     }
 }
