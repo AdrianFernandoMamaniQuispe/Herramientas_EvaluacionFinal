@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNpago = new System.Windows.Forms.TextBox();
+            this.txtSumt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.txtNfact = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtIgv = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtCantidad = new System.Windows.Forms.TextBox();
@@ -61,19 +61,21 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox3
+            // txtNpago
             // 
-            this.textBox3.Location = new System.Drawing.Point(858, 532);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(124, 20);
-            this.textBox3.TabIndex = 57;
+            this.txtNpago.Location = new System.Drawing.Point(858, 532);
+            this.txtNpago.Name = "txtNpago";
+            this.txtNpago.ReadOnly = true;
+            this.txtNpago.Size = new System.Drawing.Size(124, 20);
+            this.txtNpago.TabIndex = 57;
             // 
-            // textBox1
+            // txtSumt
             // 
-            this.textBox1.Location = new System.Drawing.Point(858, 480);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 55;
+            this.txtSumt.Location = new System.Drawing.Point(858, 480);
+            this.txtSumt.Name = "txtSumt";
+            this.txtSumt.ReadOnly = true;
+            this.txtSumt.Size = new System.Drawing.Size(124, 20);
+            this.txtSumt.TabIndex = 55;
             // 
             // label12
             // 
@@ -126,6 +128,7 @@
             this.btnConsultar.TabIndex = 50;
             this.btnConsultar.Text = "Consultar Comprobante";
             this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnGestionarv
             // 
@@ -138,6 +141,7 @@
             this.btnGestionarv.TabIndex = 49;
             this.btnGestionarv.Text = "Gestionar Compras\r\n";
             this.btnGestionarv.UseVisualStyleBackColor = false;
+            this.btnGestionarv.Click += new System.EventHandler(this.btnGestionarv_Click);
             // 
             // dgvCompras
             // 
@@ -153,6 +157,7 @@
             this.txtNfact.Name = "txtNfact";
             this.txtNfact.Size = new System.Drawing.Size(108, 20);
             this.txtNfact.TabIndex = 21;
+            this.txtNfact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNfact_KeyPress);
             // 
             // label9
             // 
@@ -173,12 +178,13 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "RUC No. ";
             // 
-            // textBox2
+            // txtIgv
             // 
-            this.textBox2.Location = new System.Drawing.Point(858, 506);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(124, 20);
-            this.textBox2.TabIndex = 56;
+            this.txtIgv.Location = new System.Drawing.Point(858, 506);
+            this.txtIgv.Name = "txtIgv";
+            this.txtIgv.ReadOnly = true;
+            this.txtIgv.Size = new System.Drawing.Size(124, 20);
+            this.txtIgv.TabIndex = 56;
             // 
             // groupBox1
             // 
@@ -202,6 +208,7 @@
             this.btnRegistrar.TabIndex = 46;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtCantidad
             // 
@@ -209,6 +216,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(62, 20);
             this.txtCantidad.TabIndex = 45;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // txtPrecio
             // 
@@ -235,6 +243,7 @@
             this.btnObtener.TabIndex = 41;
             this.btnObtener.Text = "...";
             this.btnObtener.UseVisualStyleBackColor = true;
+            this.btnObtener.Click += new System.EventHandler(this.btnObtener_Click);
             // 
             // cmbProductos
             // 
@@ -284,6 +293,7 @@
             this.txtRsocial.Name = "txtRsocial";
             this.txtRsocial.Size = new System.Drawing.Size(273, 20);
             this.txtRsocial.TabIndex = 36;
+            this.txtRsocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRsocial_KeyPress);
             // 
             // label3
             // 
@@ -300,6 +310,8 @@
             this.txtCodc.Name = "txtCodc";
             this.txtCodc.Size = new System.Drawing.Size(94, 20);
             this.txtCodc.TabIndex = 32;
+            this.txtCodc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodc_KeyPress);
+            this.txtCodc.Leave += new System.EventHandler(this.txtCodc_Leave);
             // 
             // label1
             // 
@@ -316,8 +328,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 566);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNpago);
+            this.Controls.Add(this.txtSumt);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -325,7 +337,7 @@
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnGestionarv);
             this.Controls.Add(this.dgvCompras);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtIgv);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtCantidad);
@@ -344,6 +356,7 @@
             this.Name = "frmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturacion";
+            this.Load += new System.EventHandler(this.frmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -354,8 +367,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNpago;
+        private System.Windows.Forms.TextBox txtSumt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -366,7 +379,7 @@
         private System.Windows.Forms.TextBox txtNfact;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtIgv;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.TextBox txtCantidad;
